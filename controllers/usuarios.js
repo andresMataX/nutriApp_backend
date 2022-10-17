@@ -8,7 +8,7 @@ const obtenerUsuarios = (req, res = response) => {
 
 const crearUsuarios = (req, res = response) => {
   res.json({
-    msg: 'post'
+    msg: 'pest'
   })
 }
 
