@@ -1,4 +1,6 @@
 const { response } = require("express");
+const bcryptjs = require('bcryptjs');
+const Usuario = require("../models/usuario");
 
 const obtenerUsuarios = (req, res = response) => {
   res.json({
@@ -6,10 +8,32 @@ const obtenerUsuarios = (req, res = response) => {
   })
 }
 
-const crearUsuarios = (req, res = response) => {
-  res.json({
-    msg: 'pest'
-  })
+const crearUsuarios = async (req, res = response) => {
+
+  const { correo, password, estado, ...body } = req.body;
+
+  const usuarioDB = await Usuario.findOne({ correo });
+  if (usuarioDB) {
+    return res.status(400).json({
+      msg: `El correo ${usuarioDB.correo}, ya existe.`
+    });
+  }
+
+  // Encriptar la contraseña
+  const salt = bcryptjs.genSaltSync();
+  const passwordCrypt = bcryptjs.hashSync(password, salt);
+
+  const data = {
+    correo,
+    password: passwordCrypt,
+    ...body
+  }
+
+  const usuario = new Usuario(data);
+
+  await usuario.save();
+
+  res.json(usuario);
 }
 
 const actualizarUsuarios = (req, res = response) => {
