@@ -6,7 +6,28 @@ const obtenerUsuarios = (req, res = response) => {
   })
 }
 
+const crearUsuarios = (req, res = response) => {
+  res.json({
+    msg: 'post'
+  })
+}
+
+const actualizarUsuarios = (req, res = response) => {
+  res.json({
+    msg: 'put'
+  })
+}
+
+const eliminarUsuarios = (req, res = response) => {
+  res.json({
+    msg: 'delete'
+  })
+}
+
 
 module.exports = {
-  obtenerUsuarios
+  obtenerUsuarios,
+  actualizarUsuarios,
+  crearUsuarios,
+  eliminarUsuarios
 }
