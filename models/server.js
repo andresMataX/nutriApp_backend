@@ -10,8 +10,11 @@ class Server {
         this.port = process.env.PORT;
 
         this.paths = {
-            usuarios: '/api/usuarios',
+            citas: 'api/citas',
+            imc: '/api/imc',
+            peso: '/api/peso',
             recetas: '/api/recetas',
+            usuarios: '/api/usuarios',
         }
 
         this.conectarDB();

@@ -33,7 +33,7 @@ const UsuarioSchema = Schema({
   edad: {
     type: Number,
     default: false
-  }
+  },
 });
 
 UsuarioSchema.methods.toJSON = function () {

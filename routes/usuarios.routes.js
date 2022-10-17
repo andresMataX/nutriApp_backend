@@ -1,20 +1,15 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
+const { obtenerUsuarios } = require('../controllers/usuarios');
+
 // const { tieneRole, validarCampos, validarJWT } = require('../middlewares');
 
 // const { esRolValido, emailExiste, existeUsuarioPorId } = require('../helpers/db-validators');
 
-// const { usuariosGet,
-//   usuariosPut,
-//   usuariosPost,
-//   usuariosDelete } = require('../controllers/usuarios.controller');
-
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.json({ msg: 'Hola mundo' })
-});
+router.get('/', obtenerUsuarios);
 
 // Si se envían dos argumentos, uno es la ruta y el otro es el controlador
 // router.put('/:id', [
