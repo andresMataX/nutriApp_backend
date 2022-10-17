@@ -20,6 +20,7 @@ const UsuarioSchema = Schema({
   },
   avatar: {
     type: String,
+    default: 'hombre'
   },
   rol: {
     type: String,
