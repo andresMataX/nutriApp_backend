@@ -12,9 +12,12 @@ const { esRolValido, emailExiste, existeUsuarioPorId } = require('../helpers/db-
 
 const router = Router();
 
+// TODO: Validar JWT en prod.
 router.get('/', obtenerUsuarios);
 
 router.put('/:id', [
+  validarJWT,
+  tieneRole('ADMIN_ROLE'),
   check('id', 'No es un ID válido').isMongoId(),
   check('id').custom(existeUsuarioPorId),
   check('rol').custom(esRolValido),
@@ -22,6 +25,8 @@ router.put('/:id', [
 ], actualizarUsuarios);
 
 router.post('/', [
+  validarJWT,
+  tieneRole('ADMIN_ROLE'),
   check('nombre', 'El nombre es obligatorio.').not().isEmpty(),
   check('password', 'El password debe de ser más de 6 letras.').isLength({ min: 6 }),
   check('correo', 'El correo no es válido.').isEmail(),
@@ -32,7 +37,7 @@ router.post('/', [
 
 router.delete('/:id', [
   validarJWT,
-  tieneRole('ADMIN_ROLE', 'VENTAS_ROLE'),
+  tieneRole('ADMIN_ROLE'),
   check('id', 'No es un ID válido').isMongoId(),
   check('id').custom(existeUsuarioPorId),
   validarCampos
