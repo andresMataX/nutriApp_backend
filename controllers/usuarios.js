@@ -4,11 +4,12 @@ const Usuario = require("../models/usuario");
 
 const obtenerUsuarios = async (req, res = response) => {
 
-  const usuarios = await Usuario.find({ estado: true })
+  const usuarios = await Usuario.find({ estado: true });
 
   res.json({
     usuarios
-  })
+  });
+
 }
 
 const crearUsuarios = async (req, res = response) => {
@@ -37,12 +38,6 @@ const crearUsuarios = async (req, res = response) => {
 
   res.json(usuario);
 
-}
-
-const actualizarUsuarios = (req, res = response) => {
-  res.json({
-    msg: 'put'
-  })
 }
 
 const eliminarUsuarios = (req, res = response) => {
