@@ -2,9 +2,12 @@ const { response } = require("express");
 const bcryptjs = require('bcryptjs');
 const Usuario = require("../models/usuario");
 
-const obtenerUsuarios = (req, res = response) => {
+const obtenerUsuarios = async (req, res = response) => {
+
+  const usuarios = await Usuario.find({ estado: true })
+
   res.json({
-    msg: 'Ho'
+    usuarios
   })
 }
 
@@ -30,10 +33,10 @@ const crearUsuarios = async (req, res = response) => {
   }
 
   const usuario = new Usuario(data);
-
   await usuario.save();
 
   res.json(usuario);
+
 }
 
 const actualizarUsuarios = (req, res = response) => {
