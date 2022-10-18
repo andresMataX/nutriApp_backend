@@ -40,16 +40,8 @@ const crearUsuarios = async (req, res = response) => {
 
 }
 
-const eliminarUsuarios = (req, res = response) => {
-  res.json({
-    msg: 'delete'
-  })
-}
-
 
 module.exports = {
   obtenerUsuarios,
-  actualizarUsuarios,
   crearUsuarios,
-  eliminarUsuarios
 }

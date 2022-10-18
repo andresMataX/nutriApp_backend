@@ -1,10 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { obtenerUsuarios,
-  actualizarUsuarios,
-  crearUsuarios,
-  eliminarUsuarios } = require('../controllers/usuarios');
+const { obtenerUsuarios, crearUsuarios } = require('../controllers/usuarios');
 
 const { tieneRole, validarCampos, validarJWT } = require('../middlewares');
 
@@ -14,15 +11,6 @@ const router = Router();
 
 // TODO: Validar JWT en prod.
 router.get('/', obtenerUsuarios);
-
-router.put('/:id', [
-  validarJWT,
-  tieneRole('ADMIN_ROLE'),
-  check('id', 'No es un ID válido').isMongoId(),
-  check('id').custom(existeUsuarioPorId),
-  check('rol').custom(esRolValido),
-  validarCampos
-], actualizarUsuarios);
 
 router.post('/', [
   // validarJWT,
@@ -37,14 +25,6 @@ router.post('/', [
   check('rol').custom(esRolValido),
   validarCampos
 ], crearUsuarios);
-
-router.delete('/:id', [
-  validarJWT,
-  tieneRole('ADMIN_ROLE'),
-  check('id', 'No es un ID válido').isMongoId(),
-  check('id').custom(existeUsuarioPorId),
-  validarCampos
-], eliminarUsuarios);
 
 
 module.exports = router;
