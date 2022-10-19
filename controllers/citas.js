@@ -6,7 +6,14 @@ const obtenerCitas = (req, res = response) => {
   })
 }
 
+const crearCita = (req, res = response) => {
+  res.json({
+    msg: 'post citas'
+  })
+}
+
 
 module.exports = {
-  obtenerCitas
+  obtenerCitas,
+  crearCita
 }
