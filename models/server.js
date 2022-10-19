@@ -41,6 +41,7 @@ class Server {
     this.app.use(this.paths.usuarios, require('../routes/usuarios.routes'));
     this.app.use(this.paths.citas, require('../routes/citas.routes'));
     this.app.use(this.paths.peso, require('../routes/peso.routes'));
+    this.app.use(this.paths.imc, require('../routes/imc.routes'));
 
   }
 
