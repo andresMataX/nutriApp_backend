@@ -7,8 +7,13 @@ const obtenerCitas = (req, res = response) => {
 }
 
 const crearCita = (req, res = response) => {
+
+  const { usuario, fecha } = req.body;
+
+
+
   res.json({
-    msg: 'post citas'
+    usuario, fecha
   })
 }
 
