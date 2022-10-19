@@ -9,7 +9,6 @@ const { esRolValido, emailExiste } = require('../helpers/db-validators');
 
 const router = Router();
 
-// TODO: Validar JWT en prod.
 router.get('/', [
   validarJWT,
   tieneRole('ADMIN_ROLE'),
