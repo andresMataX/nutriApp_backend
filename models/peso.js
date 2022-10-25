@@ -13,6 +13,11 @@ const PesoSchema = Schema({
   fecha: {
     type: Date,
     required: true
+  },
+  pesoTipo: {
+    type: String,
+    enum: ['ACTUAL', 'DESEADO', 'INICIO'],
+    default: 'ACTUAL'
   }
 });
 
