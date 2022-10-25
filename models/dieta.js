@@ -9,7 +9,11 @@ const DietaSchema = Schema({
   desayuno: {
     type: Schema.Types.ObjectId,
     ref: 'Desayuno'
-  }
+  },
+  almuerzo: {
+    type: Schema.Types.ObjectId,
+    ref: 'Almuerzo'
+  },
 });
 
 DietaSchema.methods.toJSON = function () {

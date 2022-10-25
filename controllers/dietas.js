@@ -3,7 +3,9 @@ const Dieta = require("../models/dieta");
 
 const obtenerDietas = async (req, res = response) => {
 
-  const dietas = await Dieta.find().populate('desayuno', 'name');
+  const dietas = await Dieta.find()
+    .populate('desayuno', 'name')
+    .populate('almuerzo', 'name');
 
   res.json(dietas);
 
@@ -11,9 +13,9 @@ const obtenerDietas = async (req, res = response) => {
 
 const crearDieta = async (req, res = response) => {
 
-  const { usuario, desayuno } = req.body;
+  const { usuario, desayuno, almuerzo } = req.body;
 
-  const dieta = new Dieta({ usuario, desayuno });
+  const dieta = new Dieta({ usuario, desayuno, almuerzo });
   await dieta.save();
 
   res.json(dieta);

@@ -20,6 +20,7 @@ router.post('/', [
   check('usuario', 'No es un ID válido.').isMongoId(),
   check('usuario').custom(existeUsuarioPorId),
   check('desayuno', 'El desayuno de la dieta es obligatorio').not().isEmpty(),
+  check('almuerzo', 'El almuerzo de la dieta es obligatorio').not().isEmpty(),
   validarCampos
 ], crearDieta);
 
