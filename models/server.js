@@ -13,6 +13,7 @@ class Server {
       auth: '/api/auth',
       citas: '/api/citas',
       desayuno: '/api/desayuno',
+      almuerzo: '/api/almuerzo',
       dieta: '/api/dieta',
       imc: '/api/imc',
       peso: '/api/peso',
@@ -45,6 +46,7 @@ class Server {
     this.app.use(this.paths.imc, require('../routes/imc.routes'));
     this.app.use(this.paths.peso, require('../routes/peso.routes'));
     this.app.use(this.paths.usuarios, require('../routes/usuarios.routes'));
+    this.app.use(this.paths.almuerzo, require('../routes/almuerzos.routes'));
 
   }
 
