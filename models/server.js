@@ -19,6 +19,7 @@ class Server {
       peso: '/api/peso',
       usuarios: '/api/usuarios',
       cena: '/api/cena',
+      pasaboca: '/api/pasaboca',
     }
 
     this.conectarDB();
@@ -49,6 +50,7 @@ class Server {
     this.app.use(this.paths.usuarios, require('../routes/usuarios.routes'));
     this.app.use(this.paths.almuerzo, require('../routes/almuerzos.routes'));
     this.app.use(this.paths.cena, require('../routes/cenas.routes'));
+    this.app.use(this.paths.pasaboca, require('../routes/pasabocas.routes'));
 
   }
 

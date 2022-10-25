@@ -18,6 +18,10 @@ const DietaSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: 'Cena'
   },
+  pasaboca: {
+    type: Schema.Types.ObjectId,
+    ref: 'PasaBoca'
+  },
 });
 
 DietaSchema.methods.toJSON = function () {

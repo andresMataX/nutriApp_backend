@@ -6,7 +6,8 @@ const obtenerDietas = async (req, res = response) => {
   const dietas = await Dieta.find()
     .populate('desayuno', 'name')
     .populate('almuerzo', 'name')
-    .populate('cena', 'name');
+    .populate('cena', 'name')
+    .populate('pasaboca', 'name');
 
   res.json(dietas);
 
@@ -14,9 +15,9 @@ const obtenerDietas = async (req, res = response) => {
 
 const crearDieta = async (req, res = response) => {
 
-  const { usuario, desayuno, almuerzo, cena } = req.body;
+  const { usuario, desayuno, almuerzo, cena, pasaboca } = req.body;
 
-  const dieta = new Dieta({ usuario, desayuno, almuerzo, cena });
+  const dieta = new Dieta({ usuario, desayuno, almuerzo, cena, pasaboca });
   await dieta.save();
 
   res.json(dieta);
