@@ -12,9 +12,10 @@ class Server {
     this.paths = {
       auth: '/api/auth',
       citas: '/api/citas',
+      desayuno: '/api/desayuno',
+      dieta: '/api/dieta',
       imc: '/api/imc',
       peso: '/api/peso',
-      recetas: '/api/recetas',
       usuarios: '/api/usuarios',
     }
 
@@ -38,10 +39,12 @@ class Server {
   routes() {
 
     this.app.use(this.paths.auth, require('../routes/auth.routes'));
-    this.app.use(this.paths.usuarios, require('../routes/usuarios.routes'));
     this.app.use(this.paths.citas, require('../routes/citas.routes'));
-    this.app.use(this.paths.peso, require('../routes/peso.routes'));
+    this.app.use(this.paths.desayuno, require('../routes/desayunos.routes'));
+    this.app.use(this.paths.dieta, require('../routes/dietas.routes'));
     this.app.use(this.paths.imc, require('../routes/imc.routes'));
+    this.app.use(this.paths.peso, require('../routes/peso.routes'));
+    this.app.use(this.paths.usuarios, require('../routes/usuarios.routes'));
 
   }
 

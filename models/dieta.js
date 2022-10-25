@@ -6,10 +6,10 @@ const DietaSchema = Schema({
     ref: 'Usuario',
     required: true
   },
-  desayunos: [{
+  desayuno: {
     type: Schema.Types.ObjectId,
     ref: 'Desayuno'
-  }]
+  }
 });
 
 DietaSchema.methods.toJSON = function () {
