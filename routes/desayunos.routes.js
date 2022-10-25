@@ -8,13 +8,13 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const router = Router();
 
 router.get('/', [
-  validarJWT,
+  // validarJWT,
   tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerDesayunos);
 
 router.post('/', [
-  validarJWT,
+  // validarJWT,
   tieneRole('ADMIN_ROLE'),
   check('name', 'El nombre del desayuno es obligatorio').not().isEmpty(),
   check('ingredientes', 'Los ingredientes del desayuno son obligatorios').not().isEmpty(),
