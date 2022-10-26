@@ -9,14 +9,14 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const router = Router();
 
 router.get('/', [
-  validarJWT,
-  tieneRole('ADMIN_ROLE'),
+  // validarJWT,
+  // tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerDietas);
 
 router.post('/', [
-  validarJWT,
-  tieneRole('ADMIN_ROLE'),
+  // validarJWT,
+  // tieneRole('ADMIN_ROLE'),
   check('usuario', 'No es un ID válido.').isMongoId(),
   check('usuario').custom(existeUsuarioPorId),
   check('desayuno', 'El desayuno de la dieta es obligatorio').not().isEmpty(),
