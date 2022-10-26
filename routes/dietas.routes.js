@@ -23,6 +23,7 @@ router.post('/', [
   check('almuerzo', 'El almuerzo de la dieta es obligatorio').not().isEmpty(),
   check('cena', 'La cena de la dieta es obligatorio').not().isEmpty(),
   check('pasaboca', 'La pasa boca de la dieta es obligatorio').not().isEmpty(),
+  check('dia', 'El día de la dieta es requerido').not().isEmpty(),
   validarCampos
 ], crearDieta);
 
