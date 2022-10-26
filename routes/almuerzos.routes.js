@@ -10,7 +10,7 @@ const router = Router();
 router.get('/', [
   // validarJWT,
   // tieneRole('ADMIN_ROLE'),
-  validarCampos
+  // validarCampos
 ], obtenerAlmuerzos);
 
 router.post('/', [
