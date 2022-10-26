@@ -11,6 +11,7 @@ class Server {
 
     this.paths = {
       almuerzo: '/api/almuerzo',
+      altura: '/api/altura',
       auth: '/api/auth',
       cena: '/api/cena',
       citas: '/api/citas',
@@ -42,6 +43,7 @@ class Server {
   routes() {
 
     this.app.use(this.paths.almuerzo, require('../routes/almuerzos.routes'));
+    this.app.use(this.paths.altura, require('../routes/altura.routes'));
     this.app.use(this.paths.auth, require('../routes/auth.routes'));
     this.app.use(this.paths.cena, require('../routes/cenas.routes'));
     this.app.use(this.paths.citas, require('../routes/citas.routes'));
