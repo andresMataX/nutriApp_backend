@@ -9,13 +9,13 @@ const router = Router();
 
 router.get('/', [
   // validarJWT,
-  tieneRole('ADMIN_ROLE'),
+  // tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerCenas);
 
 router.post('/', [
   // validarJWT,
-  tieneRole('ADMIN_ROLE'),
+  // tieneRole('ADMIN_ROLE'),
   check('name', 'El nombre del desayuno es obligatorio').not().isEmpty(),
   check('ingredientes', 'Los ingredientes del desayuno son obligatorios').not().isEmpty(),
   validarCampos

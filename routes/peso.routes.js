@@ -10,13 +10,13 @@ const router = Router();
 
 router.get('/', [
   // validarJWT,
-  tieneRole('ADMIN_ROLE'),
+  // tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerPesos);
 
 router.post('/', [
   // validarJWT,
-  tieneRole('ADMIN_ROLE'),
+  // tieneRole('ADMIN_ROLE'),
   check('usuario', 'No es un ID válido.').isMongoId(),
   check('usuario').custom(existeUsuarioPorId),
   check('peso', 'El peso de la nueva medición es obligatoria').not().isEmpty(),

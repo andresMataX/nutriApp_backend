@@ -11,13 +11,13 @@ const router = Router();
 
 router.get('/', [
   // validarJWT,
-  tieneRole('ADMIN_ROLE'),
+  // tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerUsuarios);
 
 router.post('/', [
   // validarJWT,
-  tieneRole('ADMIN_ROLE'),
+  // tieneRole('ADMIN_ROLE'),
   check('nombre', 'El nombre es obligatorio.').not().isEmpty(),
   check('apellido', 'El apellido es obligatorio.').not().isEmpty(),
   check('edad', 'La edad es obligatoria.').not().isEmpty(),
