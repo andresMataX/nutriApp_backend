@@ -1,11 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const PasaBocaSchema = Schema({
-  dieta: {
-    type: Schema.Types.ObjectId,
-    ref: 'Dieta',
-    required: true
-  },
   name: {
     type: String,
     required: [true, 'El nombre del pasa boca es obligatorio'],

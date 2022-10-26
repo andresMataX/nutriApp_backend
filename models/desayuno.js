@@ -1,11 +1,6 @@
 const { Schema, model } = require('mongoose');
 
 const DesayunoSchema = Schema({
-  dieta: {
-    type: Schema.Types.ObjectId,
-    ref: 'Dieta',
-    required: true
-  },
   name: {
     type: String,
     required: [true, 'El nombre del desayuno es obligatorio'],
