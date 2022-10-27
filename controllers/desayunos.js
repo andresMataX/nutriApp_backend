@@ -10,9 +10,9 @@ const obtenerDesayunos = async (req, res = response) => {
 
 const crearDesayuno = async (req, res = response) => {
 
-  const { dieta, name, ingredientes } = req.body;
+  const { dieta, desayunos } = req.body;
 
-  const desayuno = new Desayuno({ dieta, name, ingredientes });
+  const desayuno = new Desayuno({ dieta, desayunos });
   await desayuno.save();
 
   res.json(desayuno);

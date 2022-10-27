@@ -22,9 +22,9 @@ const DietaSchema = Schema({
     type: Schema.Types.ObjectId,
     ref: 'PasaBoca'
   },
-  dia: {
-    type: String, // día/mes/año = 1/09/2022
-    required: [true, 'El día de la dieta es requerido']
+  semana: {
+    type: String, // 1-7
+    required: [true, 'La semana de la dieta es requerido']
   }
 });
 
