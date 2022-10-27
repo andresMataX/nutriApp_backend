@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { obtenerCitas, crearCita } = require('../controllers/citas');
+const { obtenerCitas, crearCita, obtenerCitasPaciente } = require('../controllers/citas');
 const { existeUsuarioPorId } = require('../helpers/db-validators');
 const { validarJWT, tieneRole } = require('../middlewares');
 const { validarCampos } = require('../middlewares/validar-campos');
@@ -13,6 +13,14 @@ router.get('/', [
   // tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerCitas);
+
+router.get('/:id', [
+  // validarJWT,
+  // tieneRole('ADMIN_ROLE'),
+  check('id', 'No es un ID válido').isMongoId(),
+  check('id').custom(existeUsuarioPorId),
+  validarCampos
+], obtenerCitasPaciente);
 
 router.post('/', [
   // validarJWT,

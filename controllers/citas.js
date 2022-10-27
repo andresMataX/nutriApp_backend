@@ -8,6 +8,16 @@ const obtenerCitas = async (req, res = response) => {
 
 }
 
+const obtenerCitasPaciente = async (req, res = response) => {
+
+  const id = req.params.id;
+
+  const citas = await Cita.find({ usuario: id })
+    .sort({ fecha: -1 });
+
+  res.json(citas);
+}
+
 const crearCita = async (req, res = response) => {
 
   const { usuario, fecha } = req.body;
@@ -31,5 +41,6 @@ const crearCita = async (req, res = response) => {
 
 module.exports = {
   obtenerCitas,
-  crearCita
+  crearCita,
+  obtenerCitasPaciente
 }
