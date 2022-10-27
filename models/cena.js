@@ -1,12 +1,14 @@
 const { Schema, model } = require('mongoose');
 
 const CenaSchema = Schema({
-  name: {
-    type: String,
-    required: [true, 'El nombre de la cena es obligatorio'],
-  },
-  ingredientes: [{
-    type: String
+  cenas: [{
+    name: {
+      type: String,
+      required: [true, 'El nombre de la cena es obligatorio'],
+    },
+    ingredientes: [{
+      type: String
+    }]
   }]
 });
 

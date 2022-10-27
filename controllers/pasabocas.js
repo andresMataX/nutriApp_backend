@@ -10,9 +10,9 @@ const obtenerPasaBocas = async (req, res = response) => {
 
 const crearPasaBoca = async (req, res = response) => {
 
-  const { dieta, name, ingredientes } = req.body;
+  const { pasabocas } = req.body;
 
-  const pasaBocas = new PasaBoca({ dieta, name, ingredientes });
+  const pasaBocas = new PasaBoca({ pasabocas });
   await pasaBocas.save();
 
   res.json(pasaBocas);
