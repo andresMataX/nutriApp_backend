@@ -16,7 +16,7 @@ const PesoSchema = Schema({
   },
   pesoTipo: {
     type: String,
-    enum: ['ACTUAL', 'DESEADO', 'INICIO'],
+    enum: ['ACTUAL', 'META', 'INICIO'],
     default: 'ACTUAL'
   }
 });

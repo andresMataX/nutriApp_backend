@@ -8,6 +8,17 @@ const obtenerPesos = async (req, res = response) => {
 
 }
 
+const obtenerPesosPaciente = async (req, res = response) => {
+
+  const id = req.params.id;
+
+  const pesos = await Peso.find({ usuario: id, pesoTipo: 'ACTUAL' })
+
+  const pesosActuales = pesos.map(p => p.peso)
+
+  res.json(pesosActuales);
+}
+
 const crearPeso = async (req, res = response) => {
 
   const { usuario, peso, pesoTipo } = req.body;
@@ -25,5 +36,6 @@ const crearPeso = async (req, res = response) => {
 
 module.exports = {
   obtenerPesos,
-  crearPeso
+  crearPeso,
+  obtenerPesosPaciente
 }
