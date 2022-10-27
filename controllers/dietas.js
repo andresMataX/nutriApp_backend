@@ -5,9 +5,9 @@ const obtenerDietas = async (req, res = response) => {
 
   const dietas = await Dieta.find()
     .populate('desayuno', 'desayunos.name')
-    .populate('almuerzo', 'name')
-    .populate('cena', 'name')
-    .populate('pasaboca', 'name');
+    .populate('almuerzo', 'almuerzos.name')
+    .populate('cena', 'cenas.name')
+    .populate('pasaboca', 'pasabocas.name');
 
   res.json(dietas);
 

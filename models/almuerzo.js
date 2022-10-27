@@ -1,12 +1,14 @@
 const { Schema, model } = require('mongoose');
 
 const AlmuerzoSchema = Schema({
-  name: {
-    type: String,
-    required: [true, 'El nombre del almuerzo es obligatorio'],
-  },
-  ingredientes: [{
-    type: String
+  almuerzos: [{
+    name: {
+      type: String,
+      required: [true, 'El nombre del almuerzo es obligatorio'],
+    },
+    ingredientes: [{
+      type: String
+    }]
   }]
 });
 

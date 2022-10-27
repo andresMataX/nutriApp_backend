@@ -16,8 +16,7 @@ router.get('/', [
 router.post('/', [
   // validarJWT,
   // tieneRole('ADMIN_ROLE'),
-  check('name', 'El nombre del desayuno es obligatorio').not().isEmpty(),
-  check('ingredientes', 'Los ingredientes del desayuno son obligatorios').not().isEmpty(),
+  check('almuerzos', 'El arreglo de almuerzos es obligatorio').not().isEmpty(),
   validarCampos
 ], crearAlmuerzo);
 
