@@ -4,7 +4,12 @@ const { check } = require('express-validator');
 const { existeUsuarioPorId } = require('../helpers/db-validators');
 const { validarJWT, tieneRole } = require('../middlewares');
 const { validarCampos } = require('../middlewares/validar-campos');
-const { obtenerPesos, crearPeso, obtenerPesosPaciente, obtenerPesoActual } = require('../controllers/pesos');
+const {
+  obtenerPesos,
+  crearPeso,
+  obtenerPesosPaciente,
+  obtenerPesoActual,
+  obtenerPesoInicial } = require('../controllers/pesos');
 
 const router = Router();
 
@@ -21,6 +26,14 @@ router.get('/actual/:id', [
   check('id').custom(existeUsuarioPorId),
   validarCampos
 ], obtenerPesoActual);
+
+router.get('/inicial/:id', [
+  // validarJWT,
+  // tieneRole('ADMIN_ROLE'),
+  check('id', 'No es un ID válido').isMongoId(),
+  check('id').custom(existeUsuarioPorId),
+  validarCampos
+], obtenerPesoInicial);
 
 router.get('/:id', [
   // validarJWT,
