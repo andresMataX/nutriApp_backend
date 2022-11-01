@@ -8,6 +8,15 @@ const obtenerPesos = async (req, res = response) => {
 
 }
 
+const obtenerPesoActual = async (req, res = response) => {
+
+  const id = req.params.id;
+
+  const peso = await Peso.findOne({ usuario: id, pesoTipo: 'ACTUAL' }).sort({ fecha: -1 })
+
+  res.json(peso.peso);
+}
+
 const obtenerPesosPaciente = async (req, res = response) => {
 
   const id = req.params.id;
@@ -37,5 +46,6 @@ const crearPeso = async (req, res = response) => {
 module.exports = {
   obtenerPesos,
   crearPeso,
-  obtenerPesosPaciente
+  obtenerPesosPaciente,
+  obtenerPesoActual
 }
