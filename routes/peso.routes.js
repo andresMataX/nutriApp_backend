@@ -9,7 +9,8 @@ const {
   crearPeso,
   obtenerPesosPaciente,
   obtenerPesoActual,
-  obtenerPesoInicial } = require('../controllers/pesos');
+  obtenerPesoInicial,
+  obtenerPesoMeta } = require('../controllers/pesos');
 
 const router = Router();
 
@@ -26,6 +27,14 @@ router.get('/actual/:id', [
   check('id').custom(existeUsuarioPorId),
   validarCampos
 ], obtenerPesoActual);
+
+router.get('/meta/:id', [
+  // validarJWT,
+  // tieneRole('ADMIN_ROLE'),
+  check('id', 'No es un ID válido').isMongoId(),
+  check('id').custom(existeUsuarioPorId),
+  validarCampos
+], obtenerPesoMeta);
 
 router.get('/inicial/:id', [
   // validarJWT,
