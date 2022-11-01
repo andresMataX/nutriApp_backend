@@ -8,6 +8,17 @@ const obtenerImcs = async (req, res = response) => {
 
 }
 
+const obtenerImcPaciente = async (req, res = response) => {
+
+  const id = req.params.id;
+
+  const imcs = await Imc.find({ usuario: id })
+
+  const imcsActuales = imcs.map(p => p.imc)
+
+  res.json(imcsActuales);
+}
+
 const crearIMC = async (req, res = response) => {
 
   const { usuario, imc } = req.body;
@@ -25,5 +36,6 @@ const crearIMC = async (req, res = response) => {
 
 module.exports = {
   obtenerImcs,
-  crearIMC
+  crearIMC,
+  obtenerImcPaciente
 }
