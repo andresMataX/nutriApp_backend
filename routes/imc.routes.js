@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { obtenerImcs, crearIMC, obtenerImcPaciente } = require('../controllers/imc');
+const { obtenerImcs, crearIMC, obtenerImcPaciente, obtenerImcActual } = require('../controllers/imc');
 
 const { existeUsuarioPorId } = require('../helpers/db-validators');
 const { validarJWT, tieneRole } = require('../middlewares');
@@ -21,6 +21,14 @@ router.get('/:id', [
   check('id').custom(existeUsuarioPorId),
   validarCampos
 ], obtenerImcPaciente);
+
+router.get('/actual/:id', [
+  // validarJWT,
+  // tieneRole('ADMIN_ROLE'),
+  check('id', 'No es un ID válido').isMongoId(),
+  check('id').custom(existeUsuarioPorId),
+  validarCampos
+], obtenerImcActual);
 
 router.post('/', [
   // validarJWT,
