@@ -12,6 +12,15 @@ const obtenerUsuarios = async (req, res = response) => {
 
 }
 
+const obtenerEdad = async (req, res = response) => {
+
+  const id = req.params.id;
+
+  const usuario = await Usuario.findById(id);
+
+  res.json({ edad: usuario.edad });
+}
+
 const crearUsuarios = async (req, res = response) => {
 
   const { correo, password, estado, ...body } = req.body;
@@ -44,4 +53,5 @@ const crearUsuarios = async (req, res = response) => {
 module.exports = {
   obtenerUsuarios,
   crearUsuarios,
+  obtenerEdad,
 }
