@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { obtenerPasaBocas, crearPasaBoca } = require('../controllers/pasabocas');
+const { obtenerPasaBocas, crearPasaBoca, obtenerPasaBocaPorSemana } = require('../controllers/pasabocas');
 const { validarJWT, tieneRole } = require('../middlewares');
 const { validarCampos } = require('../middlewares/validar-campos');
 
@@ -12,6 +12,13 @@ router.get('/', [
   // tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerPasaBocas);
+
+router.get('/:semana', [
+  // validarJWT,
+  // tieneRole('ADMIN_ROLE'),
+  check('semana', 'La semana es obligatoria').not().isEmpty(),
+  validarCampos
+], obtenerPasaBocaPorSemana);
 
 router.post('/', [
   // validarJWT,
