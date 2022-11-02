@@ -9,6 +9,26 @@ const obtenerDietas = async (req, res = response) => {
 
 }
 
+const obtenerDietaPorSemana = async (req, res = response) => {
+
+  const semana = req.params.semana;
+
+  // Obtención del desayuno que coincide con la semana
+  const dietaSemana = await Dieta.findOne({ semana })
+    .populate('desayuno', 'desayunos.name')
+    .populate('almuerzo', 'almuerzos.name')
+    .populate('cena', 'cenas.name')
+    .populate('pasaboca', 'pasabocas.name')
+
+  if (!dietaSemana) {
+    return res.status(400).json({
+      msg: `La semana ${semana}, no existe.`
+    });
+  }
+
+  res.json(dietaSemana);
+}
+
 const crearDieta = async (req, res = response) => {
 
   const { usuario, desayuno, almuerzo, cena, pasaboca, semana } = req.body;
@@ -23,5 +43,6 @@ const crearDieta = async (req, res = response) => {
 
 module.exports = {
   obtenerDietas,
-  crearDieta
+  crearDieta,
+  obtenerDietaPorSemana
 }

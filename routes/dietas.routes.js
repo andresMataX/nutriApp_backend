@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { obtenerDietas, crearDieta } = require('../controllers/dietas');
+const { obtenerDietas, crearDieta, obtenerDietaPorSemana } = require('../controllers/dietas');
 const { existeUsuarioPorId } = require('../helpers/db-validators');
 const { validarJWT, tieneRole } = require('../middlewares');
 const { validarCampos } = require('../middlewares/validar-campos');
@@ -13,6 +13,13 @@ router.get('/', [
   // tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerDietas);
+
+router.get('/:semana', [
+  // validarJWT,
+  // tieneRole('ADMIN_ROLE'),
+  check('semana', 'La semana es obligatoria').not().isEmpty(),
+  validarCampos
+], obtenerDietaPorSemana);
 
 router.post('/', [
   // validarJWT,
