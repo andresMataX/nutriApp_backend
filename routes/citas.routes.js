@@ -9,13 +9,13 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const router = Router();
 
 router.get('/', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerCitas);
 
 router.get('/:id', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('id', 'No es un ID válido').isMongoId(),
   check('id').custom(existeUsuarioPorId),
@@ -23,7 +23,7 @@ router.get('/:id', [
 ], obtenerCitasPaciente);
 
 router.post('/', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('usuario', 'No es un ID válido.').isMongoId(),
   check('usuario').custom(existeUsuarioPorId),

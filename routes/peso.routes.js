@@ -15,13 +15,13 @@ const {
 const router = Router();
 
 router.get('/', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerPesos);
 
 router.get('/actual/:id', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('id', 'No es un ID válido').isMongoId(),
   check('id').custom(existeUsuarioPorId),
@@ -29,7 +29,7 @@ router.get('/actual/:id', [
 ], obtenerPesoActual);
 
 router.get('/meta/:id', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('id', 'No es un ID válido').isMongoId(),
   check('id').custom(existeUsuarioPorId),
@@ -37,7 +37,7 @@ router.get('/meta/:id', [
 ], obtenerPesoMeta);
 
 router.get('/inicial/:id', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('id', 'No es un ID válido').isMongoId(),
   check('id').custom(existeUsuarioPorId),
@@ -45,7 +45,7 @@ router.get('/inicial/:id', [
 ], obtenerPesoInicial);
 
 router.get('/:id', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('id', 'No es un ID válido').isMongoId(),
   check('id').custom(existeUsuarioPorId),
@@ -53,7 +53,7 @@ router.get('/:id', [
 ], obtenerPesosPaciente);
 
 router.post('/', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('usuario', 'No es un ID válido.').isMongoId(),
   check('usuario').custom(existeUsuarioPorId),

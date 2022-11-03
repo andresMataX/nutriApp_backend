@@ -9,14 +9,14 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const router = Router();
 
 router.get('/:id', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('id', 'El id del usuario es obligatorio.').not().isEmpty(),
   validarCampos
 ], obtenerAlturas);
 
 router.post('/', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('usuario', 'No es un ID válido.').isMongoId(),
   check('usuario').custom(existeUsuarioPorId),

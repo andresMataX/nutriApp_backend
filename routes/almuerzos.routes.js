@@ -8,20 +8,20 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const router = Router();
 
 router.get('/', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
-  // validarCampos
+  validarCampos
 ], obtenerAlmuerzos);
 
 router.get('/:semana', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('semana', 'La semana es obligatoria').not().isEmpty(),
   validarCampos
 ], obtenerAlmuerzoPorSemana);
 
 router.post('/', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('almuerzos', 'El arreglo de almuerzos es obligatorio').not().isEmpty(),
   validarCampos

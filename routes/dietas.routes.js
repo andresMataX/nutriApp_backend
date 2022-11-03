@@ -20,8 +20,8 @@ router.get('/:semana', [
 ], obtenerDietaPorSemana);
 
 router.post('/', [
-  // validarJWT,
-  // tieneRole('ADMIN_ROLE'),
+  validarJWT,
+  tieneRole('ADMIN_ROLE'),
   check('usuario', 'No es un ID válido.').isMongoId(),
   check('usuario').custom(existeUsuarioPorId),
   check('desayuno', 'El desayuno de la dieta es obligatorio').not().isEmpty(),

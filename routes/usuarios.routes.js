@@ -10,13 +10,13 @@ const { esRolValido, emailExiste, existeUsuarioPorId } = require('../helpers/db-
 const router = Router();
 
 router.get('/', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   validarCampos
 ], obtenerUsuarios);
 
 router.get('/edad/:id', [
-  // validarJWT,
+  validarJWT,
   // tieneRole('ADMIN_ROLE'),
   check('id', 'No es un ID válido').isMongoId(),
   check('id').custom(existeUsuarioPorId),
@@ -24,8 +24,8 @@ router.get('/edad/:id', [
 ], obtenerEdad);
 
 router.post('/', [
-  // validarJWT,
-  // tieneRole('ADMIN_ROLE'),
+  validarJWT,
+  tieneRole('ADMIN_ROLE'),
   check('nombre', 'El nombre es obligatorio.').not().isEmpty(),
   check('apellido', 'El apellido es obligatorio.').not().isEmpty(),
   check('edad', 'La edad es obligatoria.').not().isEmpty(),
