@@ -9,14 +9,12 @@ const { validarCampos } = require('../middlewares/validar-campos');
 const router = Router();
 
 router.get('/', [
-  // validarJWT,
-  // tieneRole('ADMIN_ROLE'),
+  validarJWT,
   validarCampos
 ], obtenerDietas);
 
 router.get('/:semana', [
-  // validarJWT,
-  // tieneRole('ADMIN_ROLE'),
+  validarJWT,
   check('semana', 'La semana es obligatoria').not().isEmpty(),
   validarCampos
 ], obtenerDietaPorSemana);

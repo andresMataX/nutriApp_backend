@@ -3,8 +3,11 @@ const Altura = require("../models/altura");
 
 const obtenerAlturas = async (req, res = response) => {
 
-  const citas = await Altura.find();
-  res.json(citas);
+  const id = req.params.id;
+
+  const altura = await Altura.findOne({ usuario: id });
+
+  res.json({ altura: altura.altura });
 
 }
 

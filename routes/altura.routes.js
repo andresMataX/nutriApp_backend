@@ -8,9 +8,10 @@ const { validarCampos } = require('../middlewares/validar-campos');
 
 const router = Router();
 
-router.get('/', [
+router.get('/:id', [
   // validarJWT,
   // tieneRole('ADMIN_ROLE'),
+  check('id', 'El id del usuario es obligatorio.').not().isEmpty(),
   validarCampos
 ], obtenerAlturas);
 
