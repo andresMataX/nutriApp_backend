@@ -34,7 +34,7 @@ const crearPasaBoca = async (req, res = response) => {
   const pasaBocas = new PasaBoca({ pasabocas });
   await pasaBocas.save();
 
-  res.json(pasaBocas);
+  res.json({ uid: pasaBocas._id });
 
 }
 

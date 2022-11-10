@@ -34,7 +34,7 @@ const crearCena = async (req, res = response) => {
   const cena = new Cena({ cenas });
   await cena.save();
 
-  res.json(cena);
+  res.json({ uid: cena._id });
 
 }
 

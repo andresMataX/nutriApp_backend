@@ -34,7 +34,7 @@ const crearDesayuno = async (req, res = response) => {
   const desayuno = new Desayuno({ desayunos });
   await desayuno.save();
 
-  res.json(desayuno);
+  res.json({ uid: desayuno._id });
 
 }
 
