@@ -9,6 +9,14 @@ const obtenerDietas = async (req, res = response) => {
 
 }
 
+const obtenerDietasPorPaciente = async (req, res = response) => {
+  const id = req.params.id;
+
+  const dietas = await Dieta.find({ usuario: id });
+
+  res.json(dietas)
+}
+
 const obtenerDietaPorSemana = async (req, res = response) => {
 
   const semana = req.params.semana;
@@ -44,5 +52,6 @@ const crearDieta = async (req, res = response) => {
 module.exports = {
   obtenerDietas,
   crearDieta,
-  obtenerDietaPorSemana
+  obtenerDietaPorSemana,
+  obtenerDietasPorPaciente
 }

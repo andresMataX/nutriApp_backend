@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { obtenerDietas, crearDieta, obtenerDietaPorSemana } = require('../controllers/dietas');
+const { obtenerDietas, crearDieta, obtenerDietaPorSemana, obtenerDietasPorPaciente } = require('../controllers/dietas');
 const { existeUsuarioPorId } = require('../helpers/db-validators');
 const { validarJWT, tieneRole } = require('../middlewares');
 const { validarCampos } = require('../middlewares/validar-campos');
@@ -13,11 +13,18 @@ router.get('/', [
   validarCampos
 ], obtenerDietas);
 
-router.get('/:semana', [
+router.get('/semana/:semana', [
   validarJWT,
   check('semana', 'La semana es obligatoria').not().isEmpty(),
   validarCampos
 ], obtenerDietaPorSemana);
+
+router.get('/:id', [
+  validarJWT,
+  check('id', 'No es un ID válido').isMongoId(),
+  check('id').custom(existeUsuarioPorId),
+  validarCampos
+], obtenerDietasPorPaciente);
 
 router.post('/', [
   validarJWT,
